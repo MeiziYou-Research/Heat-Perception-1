@@ -1,0 +1,19 @@
+{
+  "n_examples": 36,
+  "schema": [
+    "example_id",
+    "text",
+    "label",
+    "month",
+    "example_category",
+    "group_id",
+    "is_synthetic"
+  ],
+  "label_counts": {
+    "0": 18,
+    "1": 18
+  },
+  "fully_synthetic": true,
+  "scientific_inference": false,
+  "note": "Small non-geographic examples for public workflow demonstration only."
+}

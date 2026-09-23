@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+.RData
+.Rhistory
+.Rproj.user/
+.venv/
+venv/
+qa_outputs/
+validation_outputs/
+demo_outputs/
