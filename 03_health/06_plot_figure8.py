@@ -31,8 +31,8 @@ def read_sheets(path: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
         missing = required - set(frame.columns)
         if missing:
             raise ValueError(f"{name} is missing columns: {sorted(missing)}")
-        if frame[["RR", "CI_low", "CI_high"]].isna().any().any():
-            raise ValueError(f"{name} contains missing RR or confidence limits")
+        if not np.isfinite(frame[["RR", "CI_low", "CI_high"]].to_numpy(dtype=float)).all():
+            raise ValueError(f"{name} contains missing or non-finite RR or confidence limits")
         if not ((frame.CI_low <= frame.RR) & (frame.RR <= frame.CI_high)).all():
             raise ValueError(f"{name} contains an RR outside its confidence interval")
     if len(a) != 25 or len(b) != 6 or not (b.n_sites == 3).all():
@@ -63,15 +63,17 @@ def style(ax) -> None:
 
 
 def plot(a: pd.DataFrame, b: pd.DataFrame, output: Path) -> None:
-    plt.rcParams.update({"font.family": "Arial", "font.size": 7, "pdf.fonttype": 42})
+    plt.rcParams.update({"font.family": "Arial", "font.size": 7, "pdf.fonttype": 42,
+                         "mathtext.fontset": "custom", "mathtext.rm": "Arial",
+                         "mathtext.it": "Arial:italic"})
     fig, (ax_a, ax_b) = plt.subplots(1, 2, figsize=(510 / 72, 345 / 72),
                                      gridspec_kw={"width_ratios": [1.63, 1]})
     fig.subplots_adjust(left=0.160, right=0.985, top=0.930, bottom=0.205, wspace=0.43)
     rows_a = [
-        ("Combined Category 4\n(n = 6 cities)", "Combined all sites (n=6)"),
-        ("Pooled mortality\n(n = 3 cities)", "Pooled - Mortality (n=3)"),
+        ("Combined Category 4\n(" + r"$\mathit{n}$ = 6 cities)", "Combined all sites (n=6)"),
+        ("Pooled mortality\n(" + r"$\mathit{n}$ = 3 cities)", "Pooled - Mortality (n=3)"),
         *[(x, x) for x in ["SITE_01", "SITE_04", "SITE_02"]],
-        ("Pooled hospitalisation\n(n = 3 cities)", "Pooled - Hospitalisation (n=3)"),
+        ("Pooled hospitalisation\n(" + r"$\mathit{n}$ = 3 cities)", "Pooled - Hospitalisation (n=3)"),
         *[(x, x) for x in ["SITE_03", "SITE_06", "SITE_05"]],
     ]
     y_a = np.arange(len(rows_a) - 1, -1, -1, dtype=float)

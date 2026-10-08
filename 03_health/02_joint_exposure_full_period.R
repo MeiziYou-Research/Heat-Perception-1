@@ -31,7 +31,7 @@ rm(list = ls()); gc()
 df <- readr::read_rds('final_dat.rds')
 
 # Exclude Benito Juárez (Cancún area) — geographically distinct from other Mexican sites
-df <- df %>% filter(city != "Benito Juárez")
+df <- df %>% filter(city != "Benito Ju\u00e1rez")
 
 # Compute warm_season indicator (retained for reference only; not used to filter).
 # Compute binary exposure indicators:
@@ -418,9 +418,8 @@ readr::write_csv(plot_dat, file = 'effect_size_allyear/death.csv')
 ## Section 8: Combined Category 4 estimate across six contributing cities
 ## =============================================================================
 
-# This is the production all-year combination used for Figure 8a. The
-# outcome-specific mortality and hospitalisation Category 4 estimates are
-# combined by inverse-variance weighting on the log-RR scale.
+# Figure 8a combines the outcome-specific mortality and hospitalisation
+# Category 4 estimates by inverse-variance weighting on the log-RR scale.
 death_cat4 <- death %>%
   filter(class == 'all-cause', case == 'Heat day + heat perception present')
 hosp_cat4 <- hosp %>%

@@ -31,7 +31,7 @@ rm(list = ls()); gc()
 df <- readr::read_rds('final_dat.rds')
 
 # Exclude Benito Juárez (Cancún area) — geographically distinct from other Mexican sites
-df <- df %>% filter(city != "Benito Juárez")
+df <- df %>% filter(city != "Benito Ju\u00e1rez")
 
 # Compute warm_season indicator (retained for reference only; not used to filter).
 # Compute binary exposure indicators:
@@ -139,7 +139,8 @@ for (i in 1:length(citys)) {
 
 res %>%
   dplyr::filter((converage_temp & converage_perc)) %>%
-  dplyr::filter(!(is.infinite(R2_perc) | is.infinite(R2_temp))) %>%
+  dplyr::filter(is.finite(QAIC_temp), is.finite(QAIC_perc),
+                is.finite(R2_temp), is.finite(R2_perc)) %>%
   mutate(
     delta_qaic = QAIC_temp - QAIC_perc,
     delta_r2   = R2_temp   - R2_perc
@@ -159,7 +160,7 @@ res %>%
   mutate(winner = paste0(qaic_winner, '-', r2_winnter)) -> df
 
 ## Export the summary table underlying main-text Figure 7.
-figure7_levels <- c('P-P', 'P-S', 'S-P', 'S-S', 'S-T', 'T-S', 'T-T')
+figure7_levels <- c('P-P', 'P-S', 'P-T', 'S-P', 'S-S', 'S-T', 'T-P', 'T-S', 'T-T')
 unexpected_winners <- setdiff(unique(df$winner), figure7_levels)
 if (length(unexpected_winners) > 0) {
   stop('Unexpected model-comparison classes: ', paste(unexpected_winners, collapse = ', '))

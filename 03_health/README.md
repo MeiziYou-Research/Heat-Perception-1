@@ -3,6 +3,10 @@
 This module contains the full-study-period calculation and final rendering code for main-text Figures 7 and 8. It does not represent the complete set of supplementary, subgroup and warm-season health analyses.
 
 - Figure 7 calculation: `01_model_comparison_full_period.R`. It fits parallel full-study-period models using a binary heat-day indicator and a binary daily heat-perception indicator, calculates QAIC and pseudo-R2 comparisons, assigns the model-comparison class and exports the contributing city–outcome results and the Figure 7 summary table.
+
+Figure 7 retains all nine combinations of QAIC and pseudo-R2 preferences: P-P, P-S, P-T, S-P, S-S, S-T, T-P, T-S and T-T. The first letter refers to QAIC and the second to pseudo-R2; discordant preferences are not merged with similar-performance classes.
+The analysis includes comparisons only when both models converge and both QAIC and pseudo-R2 values are finite. Absolute differences of at most 2 in QAIC and 0.02 in pseudo-R2 indicate similar performance. Figure 7 input contains one row per outcome and comparison class, including zero-count classes.
+
 - Figure 8 calculation: `02_joint_exposure_full_period.R`. It constructs the four-category daily joint exposure, calculates city-specific relative risks and 95% confidence intervals, performs the full-study-period outcome-specific pooled analyses using REML, and combines the mortality and hospitalisation Category 4 estimates by inverse-variance weighting on the log-RR scale.
 
 Final main-text rendering code is limited to:
