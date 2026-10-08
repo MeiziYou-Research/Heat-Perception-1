@@ -8,6 +8,7 @@ authors:
     email: meizi.you2026@gmail.com
   - family-names: Xu
     given-names: Zhihu
-version: 1.0.1
+version: 1.0.0
+date-released: 2026-10-08
 license: MIT
 repository-code: "https://github.com/MeiziYou-Research/Heat-Perception-1"
