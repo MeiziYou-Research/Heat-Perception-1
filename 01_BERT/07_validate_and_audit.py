@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-06_validate_and_audit.py
+07_validate_and_audit.py
 
 Evaluate a saved model on a holdout dataset and produce a monthly audit sheet.
 Two modes:

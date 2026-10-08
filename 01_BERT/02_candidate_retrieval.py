@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-01_candidate_retrieval.py
+02_candidate_retrieval.py
 
 Keyword-based candidate retrieval with simple negation handling for heat-perception tweets.
 Designed to approximate the manuscript/supplementary pipeline:

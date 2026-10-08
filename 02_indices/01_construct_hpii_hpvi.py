@@ -6,10 +6,9 @@ to all eligible posts. City-month median de-centering and 1st/99th
 percentile winsorisation are exported as explicit preprocessing variables;
 they do not replace the primary HPII ratio.
 
-HPVI follows the recovered production calculation: a trailing seven-day
-coefficient of variation is calculated from the completed daily
-heat-perception-post count series within each city-season, and valid rolling
-coefficients are averaged over the season.
+HPVI is calculated as the seasonal mean of valid trailing seven-day
+coefficients of variation in the completed daily heat-perception-post count
+series within each city-season.
 """
 
 from __future__ import annotations

@@ -11,10 +11,10 @@ The analysis includes comparisons only when both models converge and both QAIC a
 
 Final main-text rendering code is limited to:
 
-- `05_plot_figure7.py`, which reads the formal `Fig. 7` Source Data sheet;
-- `06_plot_figure8.py`, which reads the formal `Fig. 8a` and `Fig. 8b` Source Data sheets and retains their anonymised `SITE_*` labels.
+- `03_plot_figure7.py`, which reads the formal `Fig. 7` Source Data sheet;
+- `04_plot_figure8.py`, which reads the formal `Fig. 8a` and `Fig. 8b` Source Data sheets and retains their anonymised `SITE_*` labels.
 
-Thus the reproducibility chain is `authorized final_dat.rds → analytical R script → checked Source Data sheet → Python figure script → vector PDF`. For example: `python 05_plot_figure7.py --source-data "Source Data.xlsx" --output Figure7.pdf`. Supplementary-analysis and supplementary-figure scripts are not included in this minimal public repository.
+Thus the reproducibility chain is `authorized final_dat.rds → analytical R script → checked Source Data sheet → Python figure script → vector PDF`. For example: `python 03_plot_figure7.py --source-data "Source Data.xlsx" --output Figure7.pdf`. Supplementary-analysis and supplementary-figure scripts are not included in this minimal public repository.
 
 The perception exposure is a binary daily heat-perception indicator (1 = presence; 0 = absence). It is not a continuous HPII threshold.
 

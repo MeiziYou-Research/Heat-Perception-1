@@ -10,20 +10,20 @@ This repository contains the shared analysis and figure-generation code supporti
 01_BERT/
 ├── README.md
 ├── requirements.txt
-├── 00_data_collection_stub.py
-├── 01_candidate_retrieval.py
-├── 02_rule_filtering.py
-├── 03_deduplicate_and_account_hygiene.py
-├── 04_build_gold_labels.py
-├── 05_train_grouped_cv.py
-├── 06_validate_and_audit.py
+├── 01_data_collection_stub.py
+├── 02_candidate_retrieval.py
+├── 03_rule_filtering.py
+├── 04_deduplicate_and_account_hygiene.py
+├── 05_build_gold_labels.py
+├── 06_train_grouped_cv.py
+├── 07_validate_and_audit.py
 └── sample_data/
 
 02_indices/
 ├── README.md
 ├── requirements.txt
-├── 06_construct_hpii_hpvi.py
-├── 07_aggregate_city_day_indices.py
+├── 01_construct_hpii_hpvi.py
+├── 02_aggregate_city_day_indices.py
 └── sample_data/
 
 03_health/
@@ -32,8 +32,8 @@ This repository contains the shared analysis and figure-generation code supporti
 ├── INPUT_SCHEMA.md
 ├── 01_model_comparison_full_period.R
 ├── 02_joint_exposure_full_period.R
-├── 05_plot_figure7.py
-└── 06_plot_figure8.py
+├── 03_plot_figure7.py
+└── 04_plot_figure8.py
 ```
 
 ## Module 1 — BERT training and heat-perception text analysis

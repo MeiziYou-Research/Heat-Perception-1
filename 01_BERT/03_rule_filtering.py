@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-02_rule_filtering.py
+03_rule_filtering.py
 
 Apply exclusion rules after candidate retrieval.
 Rule families follow the manuscript/supplementary materials:

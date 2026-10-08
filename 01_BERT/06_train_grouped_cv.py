@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-05_train_grouped_cv.py
+06_train_grouped_cv.py
 
 Grouped 5-fold BERT training with class-weighted loss, plus optional monthly
 holdout evaluation that reproduces the Accuracy / Recall / F1 curves in
@@ -349,7 +349,7 @@ def main() -> None:
         if args.month_col not in test_df.columns:
             raise ValueError(
                 f"--temporal_test_csv must contain a '{args.month_col}' column for monthly eval. "
-                "If dates are available use 04_build_gold_labels.py to add month labels first."
+                "If dates are available use 05_build_gold_labels.py to add month labels first."
             )
         monthly_df = evaluate_monthly(
             final_model, tokenizer,

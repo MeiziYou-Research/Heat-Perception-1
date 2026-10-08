@@ -2,7 +2,7 @@
 
 ## Public text demonstration
 
-The Module 1 public demonstration contains 36 fully synthetic, non-geographic examples with the schema `example_id,text,label,month,example_category,group_id,is_synthetic`. Static checks confirm integer months 1–12, unique example identifiers, eight synthetic groups and balanced binary labels. Scripts 01–04 execute on this schema without requiring city, country, continent, coordinates, exact dates or a preassigned split.
+The Module 1 public demonstration contains 36 fully synthetic, non-geographic examples with the schema `example_id,text,label,month,example_category,group_id,is_synthetic`. Static checks confirm integer months 1–12, unique example identifiers, eight synthetic groups and balanced binary labels. Scripts 02–05 execute on this schema without requiring city, country, continent, coordinates, exact dates or a preassigned split.
 
 The Module 2 execution example contains only synthetic `DEMO_UNIT_*` identifiers and synthetic index values. It contains no study city names, country names, coordinates, city-day records or city-level analytical values.
 
@@ -11,7 +11,7 @@ The demonstration is a code-path check only. It is not used to validate manuscri
 ## Successfully validated
 
 - Python source files passed syntax parsing.
-- Synthetic Module 1 preprocessing steps 01–04 completed using the 36-example, non-geographic demonstration schema.
+- Synthetic Module 1 preprocessing steps 02–05 completed using the 36-example, non-geographic demonstration schema.
 - The public Module 2 demonstration was checked only as a synthetic code-path example. The 48 study HPPI values released for the article are limited to the rows and columns in the `Fig. 6` sheet of `Source Data.xlsx`.
 - Main-text Figure 7 and Figure 8 scripts read only their named formal Source Data sheets and produced vector-only PDF test outputs with zero raster image objects.
 - Shared code was checked for absolute local filesystem paths and obsolete methodological terminology.

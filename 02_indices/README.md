@@ -2,7 +2,7 @@
 
 The recorded environment uses Python 3.9.24, pandas 2.0.3 and NumPy 1.21.6. Install the exact package versions listed in `requirements.txt`.
 
-The module has two explicit stages. `06_construct_hpii_hpvi.py` constructs city-season HPII and HPVI from restricted city-day counts. `07_aggregate_city_day_indices.py` applies the frozen classifications and calculates continent-season summaries and HPPI(I)/HPPI(V).
+The module has two explicit stages. `01_construct_hpii_hpvi.py` constructs city-season HPII and HPVI from restricted city-day counts. `02_aggregate_city_day_indices.py` applies the frozen classifications and calculates continent-season summaries and HPPI(I)/HPPI(V).
 
 - HPII is calculated as the seasonal sum of heat-perception posts divided by the seasonal sum of eligible posts. A separate daily series is median-decentred within city-month and winsorised at the 1st and 99th percentiles for preprocessing diagnostics and sensitivity analyses.
 - HPVI is the seasonal mean of trailing seven-day coefficients of variation in the completed daily heat-perception-post count series. Each rolling coefficient is the sample standard deviation divided by the corresponding rolling mean; no epsilon is added to the denominator.
@@ -22,14 +22,14 @@ The aggregation script accepts a long city-season CSV with `city_id`, `continent
 ## Run
 
 ```bash
-python 06_construct_hpii_hpvi.py --daily-input city_day_counts.csv --output-dir constructed_indices
-python 07_aggregate_city_day_indices.py --seasonal-input constructed_indices/city_season_hpii_hpvi.csv --output-dir outputs
+python 01_construct_hpii_hpvi.py --daily-input city_day_counts.csv --output-dir constructed_indices
+python 02_aggregate_city_day_indices.py --seasonal-input constructed_indices/city_season_hpii_hpvi.csv --output-dir outputs
 ```
 
 To use a named event indicator in the de-centering baseline:
 
 ```bash
-python 06_construct_hpii_hpvi.py --daily-input city_day_counts.csv --output-dir constructed_indices --event-flag-col event_week
+python 01_construct_hpii_hpvi.py --daily-input city_day_counts.csv --output-dir constructed_indices --event-flag-col event_week
 ```
 
 The construction stage exports the raw and normalized daily audit fields, the rolling-window HPVI fields, and the final city-season HPII/HPVI input consumed by the aggregation stage.
@@ -37,14 +37,14 @@ The construction stage exports the raw and normalized daily audit fields, the ro
 The aggregation stage can also be run directly from a frozen city-season input:
 
 ```bash
-python 07_aggregate_city_day_indices.py --seasonal-input city_season.csv --output-dir outputs
+python 02_aggregate_city_day_indices.py --seasonal-input city_season.csv --output-dir outputs
 ```
 
 For a public execution check using fully synthetic values:
 
 ```bash
 python sample_data/generate_demo_indices.py
-python 07_aggregate_city_day_indices.py --seasonal-input sample_data/demo_city_season.csv --output-dir demo_outputs --expect-cities 24 --expect-continents 6
+python 02_aggregate_city_day_indices.py --seasonal-input sample_data/demo_city_season.csv --output-dir demo_outputs --expect-cities 24 --expect-continents 6
 ```
 
 The output includes classified city-season records, continent-season category shares, and 48 HPPI estimates (six continents x four seasons x two metrics) when the complete 347-city dataset is supplied.
